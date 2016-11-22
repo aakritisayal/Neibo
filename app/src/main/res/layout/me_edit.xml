@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#FEFDFE"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/pink_dark">
+
+
+
+        <TextView
+            android:id="@+id/txtCancel"
+            style="@style/font_roboto_regular_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Cancel"
+            android:paddingLeft="20dp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:textSize="18sp" />
+
+        <TextView
+            style="@style/font_roboto_regular_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+
+        <TextView
+            android:id="@+id/txtSave"
+            style="@style/font_roboto_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Save"
+            android:paddingRight="20dp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+
+    </RelativeLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="30dp"
+      android:layout_marginTop="30dp"
+        android:gravity="center_vertical"
+        android:background="#FEFDFE"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/cam"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgChange"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/round_grey"/>
+
+        <TextView
+            style="@style/font_roboto_regular_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:hint="Change Photo"
+            android:singleLine="true"
+            android:textColor="#808285"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:src="@drawable/me"
+            android:layout_height="25dp" />
+
+        <EditText
+            android:id="@+id/edtUsername"
+            style="@style/font_roboto_regular_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:hint="Username"
+            android:maxLength="30"
+            android:background="@android:color/transparent"
+            android:layout_marginLeft="10dp"
+            android:textColor="#808285"
+            android:textSize="14dp" />
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="30dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:src="@drawable/me"
+            android:layout_height="25dp" />
+
+        <EditText
+            android:id="@+id/edtName"
+            style="@style/font_roboto_regular_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:hint="Name"
+            android:maxLength="40"
+            android:background="@android:color/transparent"
+            android:layout_marginLeft="10dp"
+            android:textColor="#808285"
+            android:textSize="14dp" />
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="30dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:src="@drawable/invite_friends"
+            android:layout_height="25dp" />
+
+        <EditText
+            android:id="@+id/edtEmail"
+            style="@style/font_roboto_regular_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:hint="Email"
+            android:background="@android:color/transparent"
+            android:layout_marginLeft="10dp"
+            android:textColor="#808285"
+            android:textSize="14dp" />
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/lnrlocation"
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/background_grey"
+        android:layout_height="35dp">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/location" />
+
+        <TextView
+            android:id="@+id/txtLoction"
+            style="@style/font_roboto_regular_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="Location"
+            android:textColor="#808285"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="#BCBEC0"></View>
+
+    <TextView
+        style="@style/font_roboto_regular_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:hint="Bio (optional)"
+        android:singleLine="true"
+        android:textColor="@color/dark_grey"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/txtAbtUrslf"
+        style="@style/font_roboto_regular_txt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent"
+        android:hint="Tell us about yourself"
+        android:gravity="top"
+        android:textColorHint="#D1D3D4"
+        android:textSize="14sp" />
+
+
+
+
+</LinearLayout>

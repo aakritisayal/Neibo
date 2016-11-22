@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/pink_dark">
+
+        <ImageView
+            android:id="@+id/web_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingBottom="18dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="18dp"
+            android:src="@drawable/back_button" />
+
+        <ImageView
+
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:src="@drawable/neibo_logo_white"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/web_back" />
+
+
+    </RelativeLayout>
+
+    <ProgressBar
+        style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:id="@+id/progress_view"
+        android:max="100"
+        android:progress="0"/>
+
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </WebView>
+
+</LinearLayout>

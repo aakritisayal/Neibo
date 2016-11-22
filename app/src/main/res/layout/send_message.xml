@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#F2F2F2">
+
+        <TextView
+            android:id="@+id/txtCancel"
+            style="@style/font_roboto_regular_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Cancel"
+            android:paddingLeft="20dp"
+            android:textColor="#0E78DC"
+            android:gravity="center"
+            android:textSize="16sp" />
+
+        <TextView
+            style="@style/font_roboto_regular_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send us a message"
+            android:textColor="#666666"
+            android:paddingLeft="20dp"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+
+        <TextView
+            android:id="@+id/txtNext"
+            style="@style/font_roboto_regular_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Next"
+            android:paddingRight="20dp"
+            android:textColor="#C9C7C9"
+          android:gravity="center"
+            android:textSize="16sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#BCBEC0"></View>
+
+    <EditText
+        android:id="@+id/edtSearch"
+        style="@style/font_roboto_regular_txt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top"
+        android:layout_margin="20dp"
+        android:background="@android:color/transparent"
+        android:hint="Give feedback or ask for help"
+        android:textColorHint="#D1D3D4"
+        android:textSize="14sp" />
+
+
+
+</LinearLayout>

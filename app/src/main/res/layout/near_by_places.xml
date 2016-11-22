@@ -1,0 +1,26 @@
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#0f00"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="wrap_content">
+        <android.app.krap.neibo.ExpandableHeightGridView
+            android:id="@+id/gridviewNear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:horizontalSpacing="10dp"
+            android:isScrollContainer="false"
+            android:numColumns="1"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp"/>
+
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

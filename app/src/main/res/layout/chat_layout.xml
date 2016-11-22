@@ -1,0 +1,159 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/layout_top"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/pink_dark">
+
+                <ImageView
+                    android:id="@+id/backcHAT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="18dp"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="18dp"
+                    android:src="@drawable/back_button" />
+
+                <TextView
+                    style="@style/font_roboto_regular_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="Friends Name"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp" />
+
+
+                <ImageView
+                    android:id="@+id/image_fround"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                   android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/round_grey"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true" />
+
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="10">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="8.5">
+
+                <ListView
+                    android:id="@+id/chat_list_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/bottomlayout"
+                    android:divider="@drawable/chat_divider"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:scrollbarStyle="outsideOverlay"></ListView>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/bottomlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_weight="1.5"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:weightSum="5"
+                       android:orientation="horizontal"
+                       android:layout_height="60dp">
+
+
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_weight="1"
+                           android:paddingLeft="30dp"
+                           android:gravity="center"
+                           android:layout_height="match_parent">
+                           <EditText
+                               android:layout_width="match_parent"
+
+                               android:paddingBottom="15dp"
+                               android:paddingTop="15dp"
+                               style="@style/font_roboto_medium"
+                               android:textColor="@color/dark_grey"
+                               android:textSize="14dp"
+                               android:textColorHint="@color/light_grey"
+                               android:hint="Type a message"
+                               android:layout_height="wrap_content" />
+
+
+                       </LinearLayout>
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_weight="4"
+                           android:gravity="center"
+                           android:layout_height="match_parent">
+
+                           <TextView
+                               android:layout_width="wrap_content"
+                               style="@style/font_roboto_medium"
+                               android:textColor="@color/dark_grey"
+                               android:textSize="14dp"
+                               android:text="Send"
+                               android:layout_height="wrap_content" />
+
+                       </LinearLayout>
+
+                   </LinearLayout>
+                    
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/pink_dark">
+
+            <ImageView
+                android:id="@+id/backInt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingBottom="18dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="18dp"
+                android:src="@drawable/back_button" />
+
+            <TextView
+                style="@style/font_roboto_regular_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="Asia News"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+
+
+        </RelativeLayout>
+
+
+
+
+        <LinearLayout
+            android:id="@+id/linearAsianews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                style="@style/font_roboto_medium"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="left|center"
+                android:text="Channel News Asia Latest World"
+                android:textColor="#808285"
+                android:paddingLeft="20dp"
+                android:textSize="16dp"
+                android:layout_gravity="left"
+                android:background="#F1F1F2" />
+
+
+            <LinearLayout
+                android:id="@+id/linearAsia1"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="20dp"
+                android:layout_height="wrap_content">
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/rltvCreateNewDeck"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                style="@style/font_roboto_medium"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="left|center"
+                android:text="Finance Asia"
+                android:textColor="#808285"
+                android:paddingLeft="20dp"
+                android:textSize="16dp"
+                android:layout_gravity="left"
+                android:background="#F1F1F2" />
+
+
+            <LinearLayout
+                android:id="@+id/linearAsia12"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="20dp"
+                android:layout_height="wrap_content">
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                style="@style/font_roboto_medium"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="left|center"
+                android:text="Asia News Network"
+                android:textColor="#808285"
+                android:paddingLeft="20dp"
+                android:textSize="16dp"
+                android:layout_gravity="left"
+                android:background="#F1F1F2" />
+
+
+            <LinearLayout
+                android:id="@+id/linearAsia3"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="20dp"
+                android:layout_height="wrap_content">
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                style="@style/font_roboto_medium"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="left|center"
+                android:text="ATimes"
+                android:textColor="#808285"
+                android:paddingLeft="20dp"
+                android:textSize="16dp"
+                android:layout_gravity="left"
+                android:background="#F1F1F2" />
+
+
+            <LinearLayout
+                android:id="@+id/linearAsia4"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="20dp"
+                android:layout_height="wrap_content">
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                style="@style/font_roboto_medium"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="left|center"
+                android:text="CNN Asia"
+                android:textColor="#808285"
+                android:paddingLeft="20dp"
+                android:textSize="16dp"
+                android:layout_gravity="left"
+                android:background="#F1F1F2" />
+
+
+            <LinearLayout
+                android:id="@+id/linearAsia5"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="20dp"
+                android:layout_height="wrap_content">
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</ScrollView>

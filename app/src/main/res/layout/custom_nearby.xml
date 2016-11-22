@@ -1,0 +1,136 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/light_grey">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+
+            <!--<TextView-->
+            <!--android:id="@+id/news_time"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:paddingTop="10dp"-->
+            <!--android:paddingBottom="10dp"-->
+            <!--android:text="Date"-->
+            <!--style="@style/font_roboto_regular_txt"-->
+            <!--android:textColor="@color/textColor"-->
+            <!--android:textSize="12dp" />-->
+
+            <ImageView
+                android:id="@+id/img_icon"
+                android:layout_width="fill_parent"
+                android:layout_height="180dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:src="@drawable/find_facebook" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:gravity="left">
+
+                    <TextView
+                        android:id="@+id/heading"
+                        style="@style/font_roboto_medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text=""
+                        android:textColor="@color/pink_dark"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/sub_heading"
+                        style="@style/font_roboto_medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:singleLine="true"
+                        android:layout_centerHorizontal="true"
+                        android:text=""
+                        android:textColor="@color/dark_grey"
+                        android:textSize="14dp" />
+
+
+                    <TextView
+                        android:id="@+id/sub_description"
+                        style="@style/font_roboto_regular_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_centerHorizontal="true"
+                        android:text=""
+                        android:textColor="@color/light_grey"
+                        android:textSize="14dp" />
+
+
+
+                </LinearLayout>
+
+                <!--<LinearLayout-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="right"-->
+                <!--android:layout_weight="1.5"-->
+                <!--android:gravity="right" >-->
+
+                <!--<ImageView-->
+                <!--android:id="@+id/share"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@drawable/share1"-->
+                <!--android:textColor="#ffffff" />-->
+                <!--</LinearLayout>-->
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/news_DETAIL"
+                style="@style/font_roboto_regular_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:paddingLeft="20dp"
+                android:text=""
+                android:textColor="@color/textColor"
+                android:textSize="16dp" />
+
+
+            <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:background="@color/dark_grey"-->
+            <!--android:layout_height="0.5dp"/>-->
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

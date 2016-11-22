@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Neibo</string>
+    <string name="strr_choose">Pleasec choose your language</string>
+    <string name="sign_up_neibo">Sign up for Neibo</string>
+    <string name="continue_facebook">Continue with facebook</string>
+    <string name="sign_email">Sign up with Email</string>
+    <string name="already_acnt">Already have an account? Login</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="confirm_pass">Confirm Password</string>
+    <string name="email">Email Address</string>
+
+<string name="userNm_email">Username or Email Address</string>
+    <string name="contact_nbr">Contact Number</string>
+    <string name="create_acnt">Create Account</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="login">Login</string>
+    <string name="forgot_pass"><u>Forgot your password</u></string>
+    <string name="txtcontinue">Continue</string>
+    <string name="Forgot_password">Forgot password</string>
+    <string name="user_name">Username</string>
+
+
+    <string-array name="values">
+        <item>Today</item>
+        <item>Entertainment</item>
+        <item>Movie</item>
+        <item>Travel</item>
+        <item>Events</item>
+        <item>News</item>
+        <item>Near by Places</item>
+        <item>Shopping</item>
+    </string-array>
+
+
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Neibo</string>
+    <string name="strr_choose">โปรดเลือกภาษาของคุณ</string>
+    <string name="sign_up_neibo">ลงทะเบียนสำหรับ Neibo</string>
+    <string name="continue_facebook">ดำเนินการต่อกับ Facebook</string>
+    <string name="sign_email">ลงทะเบียนกับอีเมล์</string>
+    <string name="already_acnt">มีบัญชีอยู่แล้ว? เข้าสู่ระบบ</string>
+    <string name="name">ชื่อ</string>
+
+    <string name="password">รหัสผ่าน</string>
+    <string name="confirm_pass">ยืนยันรหัสผ่าน</string>
+    <string name="email">ที่อยู่อีเมล</string>
+    <string name="userNm_email">ชื่อผู้ใช้หรือที่อยู่อีเมล</string>
+
+    <string name="contact_nbr">เบอร์ติดต่อ</string>
+    <string name="create_acnt">สร้างบัญชี</string>
+    <string name="sign_up">ลงชื่อ</string>
+    <string name="login">เข้าสู่ระบบ</string>
+    <string name="forgot_pass"><u>ลืมรหัสผ่านหรือไม่</u></string>
+    <string name="txtcontinue">ต่อ</string>
+    <string name="Forgot_password">ลืมรหัสผ่าน</string>
+    <string name="user_name">ชื่อผู้ใช้</string>
+
+
+
+
+</resources>

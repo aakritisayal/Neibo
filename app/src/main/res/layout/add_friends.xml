@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/pink_dark">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingBottom="18dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="18dp"
+            android:src="@drawable/back_button" />
+
+        <TextView
+            style="@style/font_roboto_regular_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="Add Friends"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/background_edit_text"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/search_img" />
+
+        <EditText
+            android:id="@+id/edtSearch"
+            style="@style/font_roboto_regular_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="10dp"
+            android:background="@android:color/transparent"
+            android:hint="Search by name or username"
+            android:singleLine="true"
+            android:textColorHint="#666666"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:background="#666666"
+        android:layout_marginTop="12dp"
+        android:layout_height="0.5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="30dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:layout_height="30dp">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:src="@drawable/find_facebook"
+            android:layout_height="25dp" />
+
+        <TextView
+            style="@style/font_roboto_regular_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Find friends on Facebook"
+            android:layout_marginLeft="10dp"
+            android:textColor="#808285"
+            android:textSize="14dp" />
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="30dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:layout_height="30dp">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:src="@drawable/find_contacts"
+            android:layout_height="25dp" />
+
+        <TextView
+            style="@style/font_roboto_regular_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Find in contacts"
+            android:layout_marginLeft="10dp"
+            android:textColor="#808285"
+            android:textSize="14dp" />
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="30dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:layout_height="30dp">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:src="@drawable/invite_friends"
+            android:layout_height="25dp" />
+
+        <TextView
+            style="@style/font_roboto_regular_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Invite Friends to Neibo"
+            android:layout_marginLeft="10dp"
+            android:textColor="#808285"
+            android:textSize="14dp" />
+
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:background="#E6E6E6"
+        android:paddingLeft="30dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:paddingTop="10dp"
+        style="@style/font_roboto_medium"
+        android:textColor="#BDBDBD"
+        android:textSize="14dp"
+        android:text="Friends"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        style="@style/font_roboto_regular_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:text="Its lonely here . Invite friends to join you"
+        android:layout_marginLeft="30dp"
+        android:textColor="#808285"
+        android:textSize="14dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="30dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:layout_height="30dp">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:src="@drawable/friends"
+            android:layout_height="25dp" />
+
+        <TextView
+            style="@style/font_roboto_regular_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Invite friends by texts"
+            android:layout_marginLeft="10dp"
+            android:textColor="#808285"
+            android:textSize="14dp" />
+
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:background="#666666"
+        android:layout_marginTop="10dp"
+        android:layout_height="0.5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="30dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:layout_height="30dp">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:src="@drawable/invite_friends"
+            android:layout_height="25dp" />
+
+        <TextView
+            style="@style/font_roboto_regular_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Invite friends by gmail"
+            android:layout_marginLeft="10dp"
+            android:textColor="#808285"
+            android:textSize="14dp" />
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
