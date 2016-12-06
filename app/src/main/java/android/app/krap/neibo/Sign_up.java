@@ -21,11 +21,14 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
@@ -54,9 +57,9 @@ public class Sign_up extends Activity {
     private ProgressDialog prgDialog;
     RelativeLayout register_bck;
     Button btncontinue;
-    EditText edtName, edtEmailPasswordR, edtEmailConformpass, edtEmailId, edtMobile,edtUserName;
+    EditText edtName, edtEmailPasswordR, edtEmailConformpass, edtEmailId, edtMobile, edtUserName;
     ImageView imgProfilePicture;
-    String strname, strpassword, strConfirmPass, strEmail, strMobile, response,realPath,strUsername;
+    String strname, strpassword, strConfirmPass, strEmail, strMobile, response, realPath, strUsername;
 
     public static final int REQUEST_CAMERA = 0x1;
     public static final int SELECT_FILE = 0x2;
@@ -80,14 +83,21 @@ public class Sign_up extends Activity {
 
         register_bck = (RelativeLayout) findViewById(R.id.register_bck);
         btncontinue = (Button) findViewById(R.id.createAcnt);
-        imgProfilePicture =(ImageView) findViewById(R.id.imgProfilePicture);
+        imgProfilePicture = (ImageView) findViewById(R.id.imgProfilePicture);
 
-        edtName =(EditText) findViewById(R.id.edtName);
-        edtEmailPasswordR =(EditText) findViewById(R.id.edtEmailPasswordR);
-        edtEmailConformpass =(EditText) findViewById(R.id.edtEmailConformpass);
-        edtEmailId =(EditText) findViewById(R.id.edtEmailId);
-        edtMobile =(EditText) findViewById(R.id.edtMobile);
-        edtUserName =(EditText) findViewById(R.id.edtUserName);
+        edtName = (EditText) findViewById(R.id.edtName);
+        edtEmailPasswordR = (EditText) findViewById(R.id.edtEmailPasswordR);
+        edtEmailConformpass = (EditText) findViewById(R.id.edtEmailConformpass);
+        edtEmailId = (EditText) findViewById(R.id.edtEmailId);
+        edtMobile = (EditText) findViewById(R.id.edtMobile);
+        edtUserName = (EditText) findViewById(R.id.edtUserName);
+
+        showCursor(edtName);
+        showCursor(edtEmailPasswordR);
+        showCursor(edtEmailConformpass);
+        showCursor(edtEmailId);
+        showCursor(edtMobile);
+        showCursor(edtUserName);
 
 
         imgProfilePicture.setOnClickListener(new View.OnClickListener() {
@@ -107,7 +117,7 @@ public class Sign_up extends Activity {
                 strConfirmPass = edtEmailConformpass.getText().toString();
                 strEmail = edtEmailId.getText().toString();
                 strMobile = edtMobile.getText().toString();
-                strUsername =edtUserName.getText().toString();
+                strUsername = edtUserName.getText().toString();
 
                 int l = strpassword.length();
 
@@ -117,11 +127,9 @@ public class Sign_up extends Activity {
 
                 if (strname.equals("")) {
                     Toast.makeText(Sign_up.this, "Please provide name", Toast.LENGTH_SHORT).show();
-                }
-                else if(strUsername.equals("")){
+                } else if (strUsername.equals("")) {
                     Toast.makeText(Sign_up.this, "Please provide Username", Toast.LENGTH_SHORT).show();
-                }
-                else if (strpassword.equals("")) {
+                } else if (strpassword.equals("")) {
                     Toast.makeText(Sign_up.this, "Please provide Password", Toast.LENGTH_SHORT).show();
                 } else if (strConfirmPass.equals("")) {
                     Toast.makeText(Sign_up.this, "Please confirm Password", Toast.LENGTH_SHORT).show();
@@ -131,13 +139,10 @@ public class Sign_up extends Activity {
                     Toast.makeText(Sign_up.this, "Please provide Email", Toast.LENGTH_SHORT).show();
                 } else if (strMobile.equals("")) {
                     Toast.makeText(Sign_up.this, "Contact number is missing", Toast.LENGTH_SHORT).show();
-                }
-
-                else if (realPath == null) {
+                } else if (realPath == null) {
                     Toast.makeText(Sign_up.this, "Please set image for this account", Toast.LENGTH_SHORT).show();
 
-                }
-                else {
+                } else {
                     ConnectionDetector cd = new ConnectionDetector(Sign_up.this);
                     try {
                         Boolean isInternetPresent = cd.isConnectingToInternet(); // true or false
@@ -191,7 +196,7 @@ public class Sign_up extends Activity {
                 entity.addPart("password", new StringBody(strpassword));
                 entity.addPart("password_confirmation", new StringBody(strpassword));
                 entity.addPart("phone_number", new StringBody(strMobile));
-                entity.addPart("username",new StringBody(strUsername));
+                entity.addPart("username", new StringBody(strUsername));
 
                 post.setEntity(entity);
 
@@ -214,7 +219,7 @@ public class Sign_up extends Activity {
                 e.printStackTrace();
             }
 
-          return response;
+            return response;
         }
 
 
@@ -223,21 +228,21 @@ public class Sign_up extends Activity {
             super.onPostExecute(s);
             Common_methods.showDialog.dismiss();
 
-            if(s!=null){
+            if (s != null) {
 
-                if(s.contains("access_token")){
+                if (s.contains("access_token")) {
                     try {
                         JSONObject obj = new JSONObject(s);
 
                         JSONObject user = obj.getJSONObject("user");
 
-                        String access_token =obj.getString("access_token");
+                        String access_token = obj.getString("access_token");
                         String phone_number = user.getString("phone_number");
                         String name = user.getString("name");
                         String username = user.getString("username");
                         String email = user.getString("email");
                         String profile_image = user.getString("profile_image");
-                        String profileImg_upload =user.getString("profile_image");
+                        String profileImg_upload = user.getString("profile_image");
 
                         String interest = user.getString("interest");
                         String latitude = user.getString("latitude");
@@ -247,10 +252,10 @@ public class Sign_up extends Activity {
                         String updated_at = user.getString("updated_at");
                         String deck_count = user.getString("deck_count");
                         String decks = user.getString("decks").toString();
-                        String about_me =user.getString("about_me");
+                        String about_me = user.getString("about_me");
 
 
-                        profile_image=url +profile_image;
+                        profile_image = url + profile_image;
 
                         if (profile_image.contains(" ")) {
                             profile_image = profile_image.replaceAll(" ", "");
@@ -264,8 +269,8 @@ public class Sign_up extends Activity {
                         edt.putString("username", username);
                         edt.putString("email", email);
                         edt.putString("profile_image", profile_image);
-                        edt.putString("profileImg_upload",profileImg_upload);
-                        edt.putString("about_me",about_me);
+                        edt.putString("profileImg_upload", profileImg_upload);
+                        edt.putString("about_me", about_me);
 
                         edt.putString("interest", interest);
                         edt.putString("latitude", latitude);
@@ -286,20 +291,14 @@ public class Sign_up extends Activity {
                         finishAffinity();
 
 
-
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
 
-                }
-
-                else{
+                } else {
                     Toast.makeText(Sign_up.this, s, Toast.LENGTH_SHORT).show();
                 }
-            }
-
-            else{
+            } else {
                 Toast.makeText(Sign_up.this, s, Toast.LENGTH_SHORT).show();
             }
 
@@ -344,6 +343,7 @@ public class Sign_up extends Activity {
         builder.show();
 
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
@@ -388,13 +388,13 @@ public class Sign_up extends Activity {
                 bm = BitmapFactory.decodeFile(selectedImagePath, options);
 
 
-
                 bitMap = bm;
                 imgProfilePicture.setImageBitmap(bitMap);
 
             }
         }
     }
+
     public Uri getImageUri(Context inContext, Bitmap inImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
@@ -485,6 +485,39 @@ public class Sign_up extends Activity {
 
     }
 
+    public void showCursor(final EditText text) {
 
+        View.OnClickListener editTextClickListener = new View.OnClickListener()
+
+        {
+
+            public void onClick(View v) {
+                if (v.getId() == text.getId()) {
+                    text.setCursorVisible(true);
+                }
+
+            }
+        };
+
+
+        text.setOnClickListener(editTextClickListener);
+
+
+        text.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+            @Override
+            public boolean onEditorAction(TextView v, int actionId,
+                                          KeyEvent event) {
+                text.setCursorVisible(false);
+                if (event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+                    InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    in.hideSoftInputFromWindow(text.getApplicationWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                }
+                return false;
+            }
+        });
+
+
+    }
 
 }

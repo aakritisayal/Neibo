@@ -34,17 +34,14 @@ import java.util.Calendar;
  */
 public class Near_byplaces extends Fragment {
 
-    static String Client_ID = "FYXPZ5NE3NHEKEA2UVQGAGXHM42ERS1MTVVCPCS14VGI1HU2";
-    static String Client_SECRET = "0WKFY2TTRENTWNMBAQSNRZKSPYIGOHCJDI0SSG2CTQN2P1KE";
+ public    static String Client_ID = "FYXPZ5NE3NHEKEA2UVQGAGXHM42ERS1MTVVCPCS14VGI1HU2";
+ public    static String Client_SECRET = "0WKFY2TTRENTWNMBAQSNRZKSPYIGOHCJDI0SSG2CTQN2P1KE";
     static Dialog showDialog;
     static ExpandableHeightGridView gridviewNear;
 
-    static ArrayList<String> listTitle = new ArrayList<>();
-    static ArrayList<String> listCategory = new ArrayList<>();
-    static ArrayList<String> listDescription = new ArrayList<>();
-    static ArrayList<String> listUrl = new ArrayList<>();
 
-    static String date;
+
+    static  String query ="";
 
     SharedPreferences shared;
     SharedPreferences.Editor editor;
@@ -52,20 +49,28 @@ public class Near_byplaces extends Fragment {
    static String latitude, longitude;
 
    static GetNearByplaces getNearByplaces;
+    static  ArrayList<String> listTitle = new ArrayList<String>();
+    static   ArrayList<String> listcategory = new ArrayList<String>();
+    static ArrayList<String> listdistance = new ArrayList<String>();
+    static ArrayList<String> listrating = new ArrayList<String>();
+    static  ArrayList<String> listtips = new ArrayList<String>();
+    static  ArrayList<String> listurl = new ArrayList<String>();
+    static  ArrayList<String> listcategory_id = new ArrayList<String>();
+static  Activity activity;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.near_by_places, null);
+
+        activity= getActivity();
+
         gridviewNear = (ExpandableHeightGridView) v.findViewById(R.id.gridviewNear);
 
         showProgressDialog();
 
-        Calendar ci = Calendar.getInstance();
-        String AM_PM;
 
-        date = "" + ci.get(Calendar.YEAR) + (ci.get(Calendar.MONTH) + 1) + ci.get(Calendar.DAY_OF_MONTH);
 
 
         shared = getActivity().getSharedPreferences("shared_location", Context.MODE_MULTI_PROCESS);
@@ -98,18 +103,14 @@ public class Near_byplaces extends Fragment {
 
     public static class GetNearByplaces extends AsyncTask<String, String, String> {
 
-        Activity activi;
 
-        public GetNearByplaces(Activity activity) {
-            this.activi = activity;
-        }
 
         @Override
         protected String doInBackground(String... params) {
 
             //   String url = "https://api.foursquare.com/v2/venues/explore?client_id=" + Client_ID + "&client_secret=" + Client_SECRET + "&v=20130815%20&near=chandigarh";
 
-            String url = "https://api.foursquare.com/v2/venues/explore?client_id=" + Client_ID + "&client_secret=" + Client_SECRET + "&v=" + date + "&ll="+latitude+ ","+longitude+   "&query=near by places";
+            String url = "https://api.foursquare.com/v2/venues/explore?client_id=" + Client_ID + "&client_secret=" + Client_SECRET + "&v=" + Common_methods.getDate() + "&ll="+latitude+ ","+longitude+   "&query="+query+"";
 
             url = url.replaceAll(" ", "%20");
 
@@ -147,6 +148,15 @@ public class Near_byplaces extends Fragment {
 
                         if (groups.length() != 0) {
 
+                            listTitle.clear();
+                            listcategory.clear();
+                            listdistance.clear();
+                            listrating.clear();
+                            listtips.clear();
+                            listurl.clear();
+                            listcategory_id.clear();
+
+
                             for (int i = 0; i < groups.length(); i++) {
 
                                 JSONObject obj = groups.getJSONObject(i);
@@ -156,35 +166,58 @@ public class Near_byplaces extends Fragment {
                                     for (int j = 0; j < items.length(); j++) {
                                         JSONObject objvenue = items.getJSONObject(j);
 
-                                        JSONObject venue =objvenue.getJSONObject("venue");
+                                        JSONObject venue = objvenue.getJSONObject("venue");
 
-                                        JSONArray tips =objvenue.getJSONArray("tips");
+                                        String strTips =objvenue.optString("tips");
+                                        if(!strTips.equals("")){
+                                            JSONArray tips = objvenue.getJSONArray("tips");
 
-                                        if(tips.length()!=0){
-                                            for (int l=0;l<1;l++){
-                                                JSONObject objTips =tips.getJSONObject(l);
-                                                String text =objTips.getString("text");
-                                                listDescription.add(text);
-                                                String canonicalUrl =objTips.optString("canonicalUrl");
-                                                if(canonicalUrl.equals("null") || canonicalUrl.equals("null")){
-                                                    listUrl.add("Not specified");
+
+                                            if (tips.length() != 0) {
+                                                for (int l = 0; l < 1; l++) {
+                                                    JSONObject objTips = tips.getJSONObject(l);
+                                                    String text = objTips.getString("text");
+                                                    listtips.add(text);
+                                                    String canonicalUrl = objTips.optString("canonicalUrl");
+                                                    if (canonicalUrl.equals("null") || canonicalUrl.equals("null")) {
+                                                        listurl.add("Not specified");
+                                                    } else {
+                                                        listurl.add(canonicalUrl);
+                                                    }
                                                 }
-                                                else{
-                                                    listUrl.add(canonicalUrl);
-                                                }
+                                            } else {
+                                                listtips.add("Not specified");
+                                                listurl.add("Not specified");
                                             }
                                         }
 
-                                        else{
-                                            listDescription.add("Not specified");
-                                            listUrl.add("Not specified");
+                                        else {
+                                            listtips.add("Not specified");
+                                            listurl.add("Not specified");
                                         }
+
+
+
 
 
                                         String name = venue.getString("name");
                                         listTitle.add(name);
 
+                                        String id = venue.getString("id");
+                                        listcategory_id.add(id);
 
+                                        String rating = venue.optString("rating");
+
+                                        if(rating.equals("")){
+                                            listrating.add("_._");
+                                        }
+                                        else{
+                                            listrating.add(rating);
+                                        }
+
+
+
+                                        listdistance.add(" ");
                                         JSONArray categories = venue.getJSONArray("categories");
                                         if (categories.length() != 0) {
 
@@ -193,7 +226,7 @@ public class Near_byplaces extends Fragment {
 
                                                 JSONObject jsonObject = categories.getJSONObject(k);
                                                 String nameCategory = jsonObject.getString("name");
-                                                listCategory.add(nameCategory);
+                                                listcategory.add(nameCategory);
 
 
                                             }
@@ -210,11 +243,10 @@ public class Near_byplaces extends Fragment {
                                 }
 
 
-
                             }
 
                             gridviewNear.setExpanded(true);
-                            Show_NearBy adapter = new Show_NearBy(activi, listTitle,listCategory, listDescription, listUrl);
+                            Show_ListResults adapter = new Show_ListResults(activity, listTitle, listcategory, listdistance, listrating, listtips, listurl, listcategory_id);
 
                             gridviewNear.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
@@ -222,7 +254,7 @@ public class Near_byplaces extends Fragment {
                         }
 
                     } else {
-                        Toast.makeText(activi, s, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, s, Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -232,7 +264,7 @@ public class Near_byplaces extends Fragment {
 
 
             } else {
-                Toast.makeText(activi, s, Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, s, Toast.LENGTH_SHORT).show();
             }
 
         }
@@ -251,7 +283,7 @@ public class Near_byplaces extends Fragment {
         showDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         showDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         showDialog.setContentView(v);
-        showDialog.setCancelable(false);
+        showDialog.setCancelable(true);
 
     }
 
@@ -267,7 +299,7 @@ public class Near_byplaces extends Fragment {
             if (isInternetPresent) {
 
                 if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB){
-                    getNearByplaces  = new GetNearByplaces(activity);
+                    getNearByplaces  = new GetNearByplaces();
                     getNearByplaces.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
 
@@ -277,7 +309,7 @@ public class Near_byplaces extends Fragment {
 
                 else{
 
-                    getNearByplaces = new GetNearByplaces(activity);
+                    getNearByplaces = new GetNearByplaces();
                     getNearByplaces.execute();
 
                 }
@@ -300,112 +332,25 @@ public class Near_byplaces extends Fragment {
 
 
 
-        GetNearByplaces places = new GetNearByplaces(activity);
-        places.execute();
+
     }
 
+    public static void cancelNear_api(){
 
-    public static class Show_NearBy extends BaseAdapter {
-
-        Activity activity;
-        ArrayList<String> listTitle = new ArrayList<String>();
-        ArrayList<String> listdescription = new ArrayList<String>();
-        ArrayList<String> listCategory = new ArrayList<String>();
-        ArrayList<String> listurl = new ArrayList<String>();
-
-        private LayoutInflater layoutInflater;
-
-
-        public Show_NearBy(Activity act, ArrayList<String> title,ArrayList<String> category, ArrayList<String> description, ArrayList<String> url) {
-
-            layoutInflater = LayoutInflater.from(act);
-
-            this.activity = act;
-
-            listTitle.clear();
-            listdescription.clear();
-            listCategory.clear();
-            listurl.clear();
-
-            listTitle = title;
-            listdescription = description;
-            listCategory =category;
-            //  listdate_time = date_time;
-            listurl = url;
-
+        if (getNearByplaces != null){
+            getNearByplaces.cancel(true);
 
         }
 
-        @Override
-        public int getCount() {
-            return listTitle.size();
+
+
+        if(showDialog!=null){
+            showDialog.dismiss();
         }
 
-        @Override
-        public Object getItem(int position) {
-            return listTitle.get(position);
-        }
 
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
-            final ViewHolder holder;
-            if (convertView == null) {
-                convertView = layoutInflater.inflate(R.layout.custom_nearby, null);
-                holder = new ViewHolder();
-
-                holder.heading = (TextView) convertView.findViewById(R.id.heading);
-                holder.sub_heading = (TextView) convertView.findViewById(R.id.sub_heading);
-                holder.sub_description = (TextView) convertView.findViewById(R.id.sub_description);
-                holder.img_icon = (ImageView) convertView.findViewById(R.id.img_icon);
-
-
-                convertView.setTag(holder);
-                holder.heading.setId(position);
-
-                Log.e("images", "" + position);
-
-
-            } else {
-                holder = (ViewHolder) convertView.getTag();
-            }
-            //Set the text here!
-
-            String img_id = listTitle.get(position);
-
-
-            holder.heading.setText(listTitle.get(position));
-             holder.sub_heading.setText(listCategory.get(position));
-              holder.sub_description.setText(listdescription.get(position));
-
-
-            new Common_methods.BackTask(activity, holder.img_icon, listurl.get(position)).execute();
-
-//            holder.txtshop_address.setText("City : " + addressarr.get(position));
-//            holder.id_ofr_button.setText(offers_arr.get(position));
-//
-//            String imageUrlarrr = imageUrlarr.get(position);
-//            String img_log = shop_iconarr.get(position);
-
-
-            return convertView;
-        }
-
-        class ViewHolder {
-
-            TextView heading;
-            TextView sub_heading;
-            TextView sub_description;
-
-            ImageView img_icon;
-
-
-        }
     }
+
 
 
 }

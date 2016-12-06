@@ -24,6 +24,7 @@
     <string-array name="values">
         <item>Today</item>
         <item>Entertainment</item>
+        <item>Book a table</item>
         <item>Movie</item>
         <item>Travel</item>
         <item>Events</item>
@@ -32,5 +33,21 @@
         <item>Shopping</item>
     </string-array>
 
+
+
+    <string-array name="values1">
+        <item>Top Pics</item>
+        <item>Nearest</item>
+        <item>Trending</item>
+        <item>Food</item>
+        <item>Coffee</item>
+        <item>Nightlife</item>
+        <item>Fun</item>
+        <item>Shopping</item>
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+        <item>Desert</item>
+    </string-array>
 
 </resources>

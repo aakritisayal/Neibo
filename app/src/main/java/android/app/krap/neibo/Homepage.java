@@ -35,6 +35,7 @@ public class Homepage extends FragmentActivity {
         setContentView(R.layout.homepage);
 
 
+
        it = getIntent();
 
 
@@ -59,6 +60,7 @@ public class Homepage extends FragmentActivity {
         img_me = (ImageView) findViewById(R.id.img_me);
 
 
+        pager_fragment.setOffscreenPageLimit(5);
 
 
         fragment.add(new Search_fragment());
@@ -211,7 +213,7 @@ public class Homepage extends FragmentActivity {
             @Override
             public void onPageSelected(int position) {
 
-                Log.e("position", "" + position);
+
 
                 if (position == 0) {
                     txtSearch.setTextColor(Color.parseColor("#FF2A55"));
@@ -292,6 +294,8 @@ public class Homepage extends FragmentActivity {
         pager_fragment.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
+
+                Log.e("position change","" +position);
 
                 return fragment.get(position);
             }

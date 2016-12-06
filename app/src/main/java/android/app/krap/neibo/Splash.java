@@ -65,7 +65,6 @@ public class Splash extends Activity implements LocationListener {
         gpsTracker = new GPSTracker(Splash.this);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-
     }
 
 

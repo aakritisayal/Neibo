@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -47,6 +48,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -99,6 +103,48 @@ public class Common_methods {
     }
 
 
+
+
+
+    public static String getResponseShop(String url, List<NameValuePair> list){
+
+
+        DefaultHttpClient client = new DefaultHttpClient();
+        ResponseHandler<String> handler = new BasicResponseHandler();
+        HttpPost post = new HttpPost(url);
+        try {
+            post.setEntity(new UrlEncodedFormEntity(list));
+            post.setHeader("Authorization", "Bearer "+sp.getString("access_token",""));
+            post.setHeader("Accept","application/json");
+
+
+            HttpResponse httpresponse = client.execute(post);
+
+
+            HttpEntity resEntity = httpresponse.getEntity();
+
+
+            String res = httpresponse.getStatusLine().toString();
+            response = EntityUtils.toString(resEntity);
+
+
+            Log.e("responseAlldeals", "" + response);
+
+        } catch (ClientProtocolException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return response;
+
+    }
+
+
+
+
     public static String getResponseGet(String url){
 
 
@@ -127,6 +173,7 @@ public class Common_methods {
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+
         }
 
         return response;
@@ -173,6 +220,43 @@ public class Common_methods {
 
     }
 
+    public static String getResponseRestGet(Activity activity,String url){
+
+        sp = activity.getSharedPreferences("shared_value", Context.MODE_MULTI_PROCESS);
+        edt = sp.edit();
+
+        DefaultHttpClient client = new DefaultHttpClient();
+        ResponseHandler<String> handler = new BasicResponseHandler();
+        HttpGet post = new HttpGet(url);
+        try {
+
+
+            post.setHeader("Authorization", "Bearer "+sp.getString("access_token",""));
+            post.setHeader("Accept","application/json");
+
+            HttpResponse httpresponse = client.execute(post);
+
+
+            HttpEntity resEntity = httpresponse.getEntity();
+
+
+            String res = httpresponse.getStatusLine().toString();
+            response = EntityUtils.toString(resEntity);
+
+
+            Log.e("responseAlldeals", "" + response);
+
+        } catch (ClientProtocolException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return response;
+
+    }
 
 
     public static void showProgressDialog(Activity ct){
@@ -367,5 +451,35 @@ public class Common_methods {
         });
     }
 
+    public static String getDate(){
+
+        java.util.Date date;
+        Calendar ci = Calendar.getInstance();
+        String AM_PM = null;
+
+       String str_date = "" + ci.get(Calendar.YEAR) + "-" +(ci.get(Calendar.MONTH) + 1) + "-" +ci.get(Calendar.DAY_OF_MONTH);
+
+        SimpleDateFormat readFormat = new SimpleDateFormat("yyyy-m-d");
+        SimpleDateFormat writeFormat = new SimpleDateFormat("yyyy dd mm");
+
+
+
+        try {
+            date = readFormat.parse(str_date);
+            Log.e("Changed date",""+writeFormat.format(date));
+
+            AM_PM =writeFormat.format(date);
+
+            AM_PM=   AM_PM.replaceAll(" ","");
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+        return  AM_PM;
+    }
 
 }

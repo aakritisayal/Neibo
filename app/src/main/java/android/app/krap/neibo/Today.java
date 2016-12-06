@@ -15,10 +15,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,7 +46,7 @@ public class Today extends Fragment {
     Document document;
 
     ImageView imageToday;
-    static TextView txtName, txtMusic;
+    static TextView txtName, txtMusic, txtEntr,txtTravel;
     String profile_image, username;
     static ExpandableHeightGridView gridview;
     static Dialog showDialog;
@@ -56,6 +60,13 @@ public class Today extends Fragment {
 
     static GetMusic getMusic;
     static GetTopNews getTopNews;
+    static LinearLayout lnrEntertToday;
+    static Activity activity;
+    static GetEntrsults getEntrsults;
+
+    WebView webview;
+    ProgressBar progress_v;
+
 
     @Nullable
     @Override
@@ -64,6 +75,8 @@ public class Today extends Fragment {
 
         sp = getActivity().getSharedPreferences("shared_value", Context.MODE_MULTI_PROCESS);
         edt = sp.edit();
+
+        activity = getActivity();
 
         showProgressDialog(getActivity());
 
@@ -76,20 +89,76 @@ public class Today extends Fragment {
         linearTopStories = (LinearLayout) v.findViewById(R.id.linearTopStories);
         txtMusic = (TextView) v.findViewById(R.id.txtMusic);
         gridview = (ExpandableHeightGridView) v.findViewById(R.id.gridview);
+        txtEntr = (TextView) v.findViewById(R.id.txtEntr);
+        lnrEntertToday = (LinearLayout) v.findViewById(R.id.lnrEntertToday);
+        txtTravel =(TextView) v.findViewById(R.id.txtTravel);
+
+        webview =(WebView) v.findViewById(R.id.id_web);
+        progress_v =(ProgressBar) v.findViewById(R.id.progress_v);
+
 
 
         txtName.setText("Hi " + username);
         UrlImageViewHelper.setUrlDrawable(imageToday, profile_image, R.drawable.round_grey);
 
-        //  new BackTask(holder, array.get(position).get("link")).execute();
+        webview.getSettings().setJavaScriptEnabled(true);
+        webview.setWebViewClient(new MyBrowser());
+        webview.setWebChromeClient(new WebChromeClient());
+        webview.loadUrl("http://35.162.179.154/neibobackend/public/abc");
 
-        //  new BackTask("http://www.bangkokpost.com/vdo/thailand/1135173/exhibition-honours-the-king").execute();
+
+        webview.setWebChromeClient(new WebChromeClient() {
+            public void onProgressChanged(WebView view, int progress) {
+                //Make the bar disappear after URL is loaded, and changes string to Loading...
+
+                if(progress==20){
+                    txtTravel.setVisibility(View.VISIBLE);
+                }
+                progress_v.setProgress(progress);
+
+            }
+        });
+
+        boolean isViewVisible = webview.isShown();
+        Log.e("visible", "" + isViewVisible);
+
 
 
         callNewsApi(getActivity());
 
         return v;
     }
+
+
+    private class MyBrowser extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+
+            final String str_url = url;
+
+
+
+
+
+
+            return true;
+        }
+
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            super.onPageFinished(view, url);
+
+            final String str_url = url;
+
+
+
+        }
+
+
+    }
+
 
 
     public static class GetTopNews extends AsyncTask<String, String, String> {
@@ -122,7 +191,7 @@ public class Today extends Fragment {
                 int length = nodeList.getLength();
 
                 if (length != 0) {
-                    for (int i = 0; i < nodeList.getLength(); i++) {
+                    for (int i = 0; i < 2; i++) {
 
                         Element terrif = (Element) nodeList.item(i);
 
@@ -207,13 +276,14 @@ public class Today extends Fragment {
                 if (length != 0) {
 
                     txtMusic.setText("Music");
+                    txtMusic.setVisibility(View.VISIBLE);
 
                     listTitle.clear();
                     listdescription.clear();
                     listdate_time.clear();
                     listurl.clear();
 
-                    for (int i = 0; i < nodeList.getLength(); i++) {
+                    for (int i = 0; i < 4; i++) {
 
                         Element terrif = (Element) nodeList.item(i);
 
@@ -227,13 +297,17 @@ public class Today extends Fragment {
                         listurl.add(urllink);
 
                         String pubDate = terrif.getElementsByTagName("dc:date").item(0).getTextContent();
-                        listdate_time.add(pubDate);
 
-                        gridview.setExpanded(true);
-                        Show_Music adapter = new Show_Music(acti, listTitle, listdescription, listdate_time, listurl);
+                        if(pubDate.equals("")){
+                            listdate_time.add(" ");
+                        }
+                        else{
+                            listdate_time.add(pubDate);
+                        }
 
-                        gridview.setAdapter(adapter);
-                        adapter.notifyDataSetChanged();
+
+
+
 
 //                        LayoutInflater inflater = acti.getLayoutInflater();
 //                        View v = inflater.inflate(R.layout.news_detail, null);
@@ -251,6 +325,12 @@ public class Today extends Fragment {
 //                        new Common_methods.BackTask(acti, news_icon, urllink).execute();
 
                     }
+
+                    gridview.setExpanded(true);
+                    Show_music adapter = new Show_music(acti, listTitle, listdescription, listdate_time, listurl);
+                    adapter.notifyDataSetChanged();
+                    gridview.setAdapter(adapter);
+
 
                 }
             } else {
@@ -276,29 +356,27 @@ public class Today extends Fragment {
 
             if (isInternetPresent) {
 
-                if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB){
-                    getTopNews  = new GetTopNews(activity);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                    getTopNews = new GetTopNews(activity);
                     getTopNews.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
                     getMusic = new GetMusic(activity);
                     getMusic.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
-                }
+                    getEntrsults = new GetEntrsults();
+                    getEntrsults.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
-
-                else{
+                } else {
 
                     getTopNews = new GetTopNews(activity);
                     getTopNews.execute();
 
                     getMusic = new GetMusic(activity);
                     getMusic.execute();
+
+                    getEntrsults = new GetEntrsults();
+                    getEntrsults.execute();
                 }
-
-
-
-
-
 
 
             } else {
@@ -313,104 +391,6 @@ public class Today extends Fragment {
     }
 
 
-    public static class Show_Music extends BaseAdapter {
-
-        Activity activity;
-        ArrayList<String> listTitle = new ArrayList<String>();
-        ArrayList<String> listdescription = new ArrayList<String>();
-        ArrayList<String> listdate_time = new ArrayList<String>();
-        ArrayList<String> listurl = new ArrayList<String>();
-
-        private LayoutInflater layoutInflater;
-
-
-        public Show_Music(Activity act, ArrayList<String> title, ArrayList<String> description, ArrayList<String> date_time, ArrayList<String> url) {
-
-            layoutInflater = LayoutInflater.from(act);
-
-            this.activity = act;
-
-            listTitle.clear();
-            listdescription.clear();
-            listdate_time.clear();
-            listurl.clear();
-
-            listTitle = title;
-            listdescription = description;
-            listdate_time = date_time;
-            listurl = url;
-
-
-        }
-
-        @Override
-        public int getCount() {
-            return listTitle.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return listTitle.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
-            final ViewHolder holder;
-            if (convertView == null) {
-                convertView = layoutInflater.inflate(R.layout.news_detail, null);
-                holder = new ViewHolder();
-
-                holder.news_heading = (TextView) convertView.findViewById(R.id.news_heading);
-                holder.news_time = (TextView) convertView.findViewById(R.id.news_time);
-                holder.news_DETAIL = (TextView) convertView.findViewById(R.id.news_DETAIL);
-                holder.news_icon = (ImageView) convertView.findViewById(R.id.news_icon);
-
-
-                convertView.setTag(holder);
-                holder.news_heading.setId(position);
-
-
-            } else {
-                holder = (ViewHolder) convertView.getTag();
-            }
-            //Set the text here!
-
-            String img_id = listTitle.get(position);
-
-
-            holder.news_heading.setText(listTitle.get(position));
-            // holder.news_DETAIL.setText(listdescription.get(position));
-            holder.news_time.setText(listdate_time.get(position));
-
-
-            new Common_methods.BackTask(activity, holder.news_icon, listurl.get(position)).execute();
-
-//            holder.txtshop_address.setText("City : " + addressarr.get(position));
-//            holder.id_ofr_button.setText(offers_arr.get(position));
-//
-//            String imageUrlarrr = imageUrlarr.get(position);
-//            String img_log = shop_iconarr.get(position);
-
-
-            return convertView;
-        }
-
-        class ViewHolder {
-
-            TextView news_heading;
-            TextView news_DETAIL;
-            TextView news_time;
-
-            ImageView news_icon;
-
-
-        }
-    }
 
     public static void showProgressDialog(Activity activity) {
         showDialog = new Dialog(activity);
@@ -427,24 +407,121 @@ public class Today extends Fragment {
         showDialog.setCancelable(true);
 
     }
-public static void cancelTodayApi(Activity activity){
 
-    if (getMusic != null){
-        getMusic.cancel(true);
+    public static void cancelTodayApi(Activity activity) {
+
+        if (getMusic != null) {
+            getMusic.cancel(true);
+
+        }
+
+        if (getTopNews != null) {
+            getTopNews.cancel(true);
+
+        }
+
+        if (getEntrsults != null) {
+            getEntrsults.cancel(true);
+        }
+
+        if (showDialog != null) {
+            showDialog.dismiss();
+        }
+
 
     }
 
-    if (getTopNews != null){
-        getTopNews.cancel(true);
+    public static class GetEntrsults extends AsyncTask<String, String, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            String url = "http://bangkok.coconuts.co/rss.xml";
+
+            String response = Common_methods.getResponseGet(url);
+
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            showDialog.dismiss();
+
+            //progressBar1.setVisibility(View.GONE);
+
+            //   Common_methods.showDialog.dismiss();
+            if (s != null) {
+
+                XMLParser parse = new XMLParser();
+                org.w3c.dom.Document doc = parse.getDomElement(s);
+                NodeList nodeList = doc.getElementsByTagName("item");
+                int length = nodeList.getLength();
+
+                if (length != 0) {
+                    txtEntr.setText("Entertaiment");
+                    txtEntr.setVisibility(View.VISIBLE);
+                    lnrEntertToday.removeAllViews();
+
+                    for (int i = 0; i < 4; i++) {
+
+                        Element terrif = (Element) nodeList.item(i);
+
+                        String title = terrif.getElementsByTagName("title").item(0).getTextContent();
+                        listTitle.add(title);
+
+                        String description = terrif.getElementsByTagName("description").item(0).getTextContent();
+
+
+                        String urllink = terrif.getElementsByTagName("link").item(0).getTextContent();
+
+
+                        //      String url = Common_methods.GetUrls(urllink);
+
+
+                        LayoutInflater inflater = activity.getLayoutInflater();
+                        View v = inflater.inflate(R.layout.custom_entrtnmt_layout, null);
+                        TextView txtTitle = (TextView) v.findViewById(R.id.txtTitle);
+                        TextView txtbody = (TextView) v.findViewById(R.id.txtbody);
+                        ImageView idimage = (ImageView) v.findViewById(R.id.idimage);
+
+                        txtTitle.setText(title);
+                        txtbody.setText(description);
+
+
+                        lnrEntertToday.addView(v);
+
+                        new Common_methods.BackTask(activity, idimage, urllink).execute();
+
+                    }
+
+//                   Search_results adapter = new Search_results(getActivity(),listTitle,listDescription,listUrl);
+//                    rycCompany.setAdapter(adapter);
+
+
+                }
+
+            } else {
+                Toast.makeText(activity, s, Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            showDialog.show();
+
+            //   progressBar1.setVisibility(View.VISIBLE);
+
+//            Common_methods.showProgressDialog(acti);
+//           Common_methods.showDialog.show();
+
+        }
+
 
     }
 
-    if(showDialog!=null){
-        showDialog.dismiss();
-    }
-
-
-}
 
 }
 

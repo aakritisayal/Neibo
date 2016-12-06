@@ -159,7 +159,7 @@ ListView listView;
 
         @Override
         protected String doInBackground(String... params) {
-            String url = "http://www.bangkokpost.com/rss/data/topstories.xml";
+            String url = "http://bangkok.coconuts.co/rss.xml";
 
             String response = Common_methods.getResponseGet(url);
 

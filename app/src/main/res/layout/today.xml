@@ -59,17 +59,22 @@
 
 
         <TextView
-            style="@style/font_roboto_medium"
+            style="@style/font_roboto_regular_txt"
             android:layout_width="wrap_content"
+            android:layout_gravity="center"
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:background="@drawable/background_pink_round"
             android:gravity="center"
             android:text="Top Stories"
-            android:textColor="@color/dark_grey"
-            android:textSize="16sp" />
+            android:textColor="@color/white"
+            android:textSize="14sp" />
 
 
         <LinearLayout
@@ -77,84 +82,13 @@
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:paddingTop="10dp"
-            android:paddingBottom="20dp"
+            android:paddingBottom="10dp"
             android:layout_height="wrap_content">
 
 
         </LinearLayout>
 
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="150dp"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:layout_marginTop="10dp"-->
-            <!--android:weightSum="2">-->
-
-            <!--<ImageView-->
-                <!--android:id="@+id/imageView"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:background="#E7E8E9"-->
-                <!--android:layout_marginRight="10dp"-->
-                <!--android:layout_weight="1"></ImageView>-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:background="#E7E8E9"-->
-                <!--android:layout_marginLeft="10dp"-->
-                <!--android:layout_weight="1"></LinearLayout>-->
-
-        <!--</LinearLayout>-->
-
-
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="150dp"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:layout_marginTop="20dp"-->
-            <!--android:weightSum="2">-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:background="#E7E8E9"-->
-                <!--android:layout_marginRight="10dp"-->
-                <!--android:layout_weight="1"></LinearLayout>-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:background="#E7E8E9"-->
-                <!--android:layout_marginLeft="10dp"-->
-                <!--android:layout_weight="1"></LinearLayout>-->
-
-        <!--</LinearLayout>-->
-
-
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="150dp"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:layout_marginTop="20dp"-->
-            <!--android:weightSum="2">-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:background="#E7E8E9"-->
-                <!--android:layout_marginRight="10dp"-->
-                <!--android:layout_weight="1"></LinearLayout>-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:background="#E7E8E9"-->
-                <!--android:layout_marginLeft="10dp"-->
-                <!--android:layout_weight="1"></LinearLayout>-->
-
-        <!--</LinearLayout>-->
 
 
         <TextView
@@ -166,10 +100,17 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text=""
-            android:layout_marginLeft="5dp"
-            android:textColor="@color/dark_grey"
-            android:textSize="16dp" />
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:text="Music"
+            android:background="@drawable/background_pink_round"
+
+            android:textSize="14dp" />
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -188,6 +129,81 @@
 
 
 </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/txtEntr"
+            style="@style/font_roboto_regular_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:text="Entertainment"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:background="@drawable/background_pink_round"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+        <LinearLayout
+            android:id="@+id/lnrEntertToday"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/txtTravel"
+            style="@style/font_roboto_regular_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:text="Travel"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:background="@drawable/background_pink_round"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+        <LinearLayout
+            android:id="@+id/lnrTodayToday"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ProgressBar
+                style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="10dp"
+                android:id="@+id/progress_v"
+                android:visibility="gone"
+                android:max="100"
+                android:progress="0"/>
+
+
+            <WebView
+                android:id="@+id/id_web"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
 
     </LinearLayout>

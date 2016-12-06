@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3.5"
+        android:layout_weight="4.2"
         android:background="@color/pink_dark"
         android:weightSum="7"
         android:gravity="center_vertical"
@@ -19,31 +19,36 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_weight="1.5"
+            android:layout_weight="1.7"
             android:gravity="center_vertical"
             android:orientation="vertical"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="20dp"
-                android:src="@drawable/neibo_logo_white" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="20dp"
                 android:orientation="horizontal"
-                android:weightSum="8">
+                android:weightSum="10">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="4.5"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/back_img"
+                        android:layout_width="match_parent"
+                        android:padding="10dp"
+                        android:src="@drawable/back_button"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_weight="2"
+                    android:layout_weight="1.5"
                     android:background="@drawable/button_white"
                     android:gravity="center"
                     android:orientation="horizontal">
@@ -55,7 +60,7 @@
                         android:layout_marginLeft="15dp"
                         android:src="@drawable/search_img" />
 
-                    <EditText
+                    <AutoCompleteTextView
                         android:id="@+id/edtSearch"
                         style="@style/font_roboto_regular_txt"
                         android:layout_width="match_parent"
@@ -71,10 +76,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearsearch"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:layout_weight="6">
+                    android:layout_weight="4">
 
                     <TextView
                         style="@style/font_roboto_regular_txt"
@@ -84,9 +90,9 @@
                         android:layout_centerHorizontal="true"
                         android:gravity="center"
 
-                        android:text="Cancel"
+                        android:text="Search"
                         android:textColor="#ffffff"
-                        android:textSize="20dp" />
+                        android:textSize="18dp" />
 
 
                 </LinearLayout>
@@ -98,7 +104,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_weight="5.5"
+            android:layout_weight="5.3"
+            android:visibility="gone"
             android:orientation="vertical"
             android:gravity="bottom"
             android:layout_height="match_parent">
@@ -117,7 +124,7 @@
                 android:verticalScrollbarPosition="left"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                app:values="@array/values"
+                app:values="@array/values1"
                 app:dividerSize="5dp"
                 app:sideItems="1"/>
 
@@ -134,15 +141,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1.5">
+        android:layout_weight="0.8">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/pager_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+<ListView
+    android:id="@+id/listView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-        </android.support.v4.view.ViewPager>
 
+</ListView>
 
     </LinearLayout>
 

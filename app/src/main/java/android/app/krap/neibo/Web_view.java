@@ -7,6 +7,7 @@ import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
@@ -14,10 +15,11 @@ import android.widget.RelativeLayout;
  * Created by Android on 11/21/2016.
  */
 public class Web_view extends Activity {
-    RelativeLayout web_back;
+    ImageView web_back;
     WebView webview;
     ProgressBar progress_view;
     String url_link;
+
 
 
     @Override
@@ -30,7 +32,7 @@ public class Web_view extends Activity {
         url_link=   it.getStringExtra("url_link");
 
 
-        web_back = (RelativeLayout) findViewById(R.id.web_back);
+        web_back = (ImageView) findViewById(R.id.web_back);
         webview = (WebView) findViewById(R.id.webview);
 
         progress_view = (ProgressBar) findViewById(R.id.progress_view);
